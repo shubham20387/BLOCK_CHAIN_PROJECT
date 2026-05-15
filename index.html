@@ -23,7 +23,7 @@
             overflow: hidden;
         }
 
-        /* Background logic for GitHub deployment */
+        /* Dynamic Background System */
         #bg-container {
             position: fixed;
             top: 0;
@@ -47,6 +47,7 @@
             z-index: -1;
         }
 
+        /* Top Navigation Bar */
         .navbar {
             position: fixed;
             top: 0;
@@ -64,13 +65,13 @@
         }
 
         .nav-left { display: flex; align-items: center; gap: 20px; }
-        .menu-icon { cursor: pointer; font-size: 24px; color: var(--accent); }
         .logo { font-size: 22px; font-weight: 700; letter-spacing: 2px; }
 
         .nav-right { display: flex; gap: 25px; align-items: center; }
         .nav-icon { cursor: pointer; transition: 0.3s; fill: white; }
         .nav-icon:hover { fill: var(--accent); transform: scale(1.1); }
 
+        /* Main Container */
         .main-wrapper {
             display: flex;
             justify-content: center;
@@ -93,6 +94,7 @@
         .subtitle { color: var(--muted); text-align: center; font-size: 14px; margin-bottom: 30px; }
         .hidden { display: none; }
 
+        /* Multi-Select Styling */
         select.multi-select {
             width: 100%;
             background: #1a1a1a;
@@ -103,13 +105,28 @@
             height: 180px;
             outline: none;
         }
-        select option { padding: 12px; border-bottom: 1px solid #222; cursor: pointer; }
+        select option { padding: 12px; border-bottom: 1px solid #222; }
         select option:checked { background: var(--accent) !important; color: black; }
 
-        .invoice-box { background: #181818; padding: 25px; border-radius: 20px; border: 1px dashed #444; margin-bottom: 25px; }
-        .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
-        .row.total { border-top: 1px solid #333; padding-top: 15px; font-size: 24px; color: var(--accent); font-weight: 600; }
+        /* Invoice Box */
+        .invoice-box {
+            background: #181818;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px dashed #444;
+            margin-bottom: 25px;
+        }
 
+        .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
+        .row.total { 
+            border-top: 1px solid #333; 
+            padding-top: 15px; 
+            font-size: 24px; 
+            color: var(--accent); 
+            font-weight: 600; 
+        }
+
+        /* Buttons */
         .btn {
             width: 100%;
             padding: 18px;
@@ -124,6 +141,7 @@
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,255,136,0.2); }
 
+        /* Footer */
         .footer {
             position: fixed;
             bottom: 0;
@@ -134,7 +152,6 @@
             text-align: center;
             font-size: 12px;
             color: var(--muted);
-            letter-spacing: 1px;
         }
         .footer b { color: var(--accent); }
     </style>
@@ -146,7 +163,6 @@
 
     <nav class="navbar">
         <div class="nav-left">
-            <div class="menu-icon">☰</div>
             <div class="logo">SMOP</div>
         </div>
         <div class="nav-right">
@@ -225,7 +241,6 @@
 
             let sum = 0;
             items.forEach(i => sum += parseInt(i.value));
-            
             const tax = Math.round(sum * 0.18);
             const total = sum + tax + 150;
 
@@ -239,10 +254,42 @@
             document.getElementById('step2').classList.remove('hidden');
         }
 
-        function goToStep3() {
-            console.log("Connecting to SMOP Contract: " + CONTRACT_ADDRESS);
-            document.getElementById('step2').classList.add('hidden');
-            document.getElementById('step3').classList.remove('hidden');
+        // REAL BLOCKCHAIN CONNECTION
+        async function goToStep3() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Connect Wallet
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const userAccount = accounts[0];
+
+                    // Get ETH Value
+                    const ethStr = document.getElementById('totalETH').innerText.split(' ')[0];
+                    const ethAmount = parseFloat(ethStr);
+
+                    // Transaction Parameters
+                    const params = [{
+                        from: userAccount,
+                        to: CONTRACT_ADDRESS,
+                        value: '0x' + Math.floor(ethAmount * 1e18).toString(16),
+                    }];
+
+                    // Trigger MetaMask
+                    await window.ethereum.request({
+                        method: 'eth_sendTransaction',
+                        params: params,
+                    });
+
+                    // Success UI
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                } catch (error) {
+                    console.error(error);
+                    alert("Payment failed or was cancelled.");
+                }
+            } else {
+                alert("MetaMask not found. Please install the extension!");
+            }
         }
     </script>
 </body>
