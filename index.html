@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMOP electronics | Premium Web3 Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent: #00ff88;
+            --bg-overlay: rgba(8, 8, 8, 0.85);
+            --card: rgba(18, 18, 18, 0.95);
+            --text: #ffffff;
+            --muted: #a0a0a0;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* Background logic for GitHub deployment */
+        #bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.8s ease-in-out;
+            background-image: url('top-view-devices-supplies-composition.jpg');
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-overlay);
+            z-index: -1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            z-index: 100;
+        }
+
+        .nav-left { display: flex; align-items: center; gap: 20px; }
+        .menu-icon { cursor: pointer; font-size: 24px; color: var(--accent); }
+        .logo { font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+
+        .nav-right { display: flex; gap: 25px; align-items: center; }
+        .nav-icon { cursor: pointer; transition: 0.3s; fill: white; }
+        .nav-icon:hover { fill: var(--accent); transform: scale(1.1); }
+
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .container {
+            width: 500px;
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            backdrop-filter: blur(20px);
+        }
+
+        h1 { font-size: 32px; text-align: center; margin: 10px 0; }
+        .subtitle { color: var(--muted); text-align: center; font-size: 14px; margin-bottom: 30px; }
+        .hidden { display: none; }
+
+        select.multi-select {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            padding: 10px;
+            border-radius: 16px;
+            color: white;
+            height: 180px;
+            outline: none;
+        }
+        select option { padding: 12px; border-bottom: 1px solid #222; cursor: pointer; }
+        select option:checked { background: var(--accent) !important; color: black; }
+
+        .invoice-box { background: #181818; padding: 25px; border-radius: 20px; border: 1px dashed #444; margin-bottom: 25px; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
+        .row.total { border-top: 1px solid #333; padding-top: 15px; font-size: 24px; color: var(--accent); font-weight: 600; }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,255,136,0.2); }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.8);
+            border-top: 1px solid #222;
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 1px;
+        }
+        .footer b { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div id="bg-container"></div>
+    <div class="overlay"></div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="menu-icon">☰</div>
+            <div class="logo">SMOP</div>
+        </div>
+        <div class="nav-right">
+            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <div class="container">
+            
+            <div id="step0">
+                <h1 style="font-size: 42px;">WELCOME<br>TO STORE</h1>
+                <p class="subtitle">Premium Electronics Hub • Blockchain Secured</p>
+                <button class="btn" onclick="goToStep1()">Explore Collection</button>
+            </div>
+
+            <div id="step1" class="hidden">
+                <h1>Product Catalog</h1>
+                <p class="subtitle">Select your gear. Hold Ctrl/Cmd for multiple.</p>
+                <select id="productSelect" class="multi-select" multiple>
+                    <option value="2500">Wireless Earbuds — ₹2,500</option>
+                    <option value="5000">Mechanical Keyboard — ₹5,000</option>
+                    <option value="12000">Gaming Monitor — ₹12,000</option>
+                    <option value="45000">Student Laptop — ₹45,000</option>
+                    <option value="1500">Fast Charger 65W — ₹1,500</option>
+                </select>
+                <button class="btn" style="margin-top: 25px;" onclick="goToStep2()">Checkout Cart</button>
+            </div>
+
+            <div id="step2" class="hidden">
+                <h1>Final Invoice</h1>
+                <div class="invoice-box">
+                    <div class="row"><span>Selected Items:</span> <span id="count">0</span></div>
+                    <div class="row"><span>Subtotal:</span> <span id="subtotal">₹0</span></div>
+                    <div class="row"><span>GST (18%):</span> <span id="tax">₹0</span></div>
+                    <div class="row total">
+                        <span>Total:</span>
+                        <div style="text-align: right;">
+                            <span id="totalINR">₹0</span><br>
+                            <span id="totalETH" style="font-size: 12px; color: var(--muted);">0 ETH</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" onclick="goToStep3()">Pay with MetaMask</button>
+            </div>
+
+            <div id="step3" class="hidden" style="text-align: center;">
+                <h1 style="color: var(--accent); font-size: 48px;">Successful</h1>
+                <p class="subtitle" style="font-size: 18px;">Thank You for choosing SMOP!</p>
+                <button class="btn" style="margin-top: 20px;" onclick="location.reload()">New Order</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        All copyright reserved. Developed by: <b>Shubhamkumar, Mohit, Om, Parth</b>
+    </div>
+
+    <script>
+        const ETH_RATE = 250000;
+        const CONTRACT_ADDRESS = "0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8";
+        const bg = document.getElementById('bg-container');
+
+        function goToStep1() {
+            bg.style.backgroundImage = "url('modern-stationary-collection-arrangement.jpg')";
+            document.getElementById('step0').classList.add('hidden');
+            document.getElementById('step1').classList.remove('hidden');
+        }
+
+        function goToStep2() {
+            const select = document.getElementById('productSelect');
+            const items = Array.from(select.selectedOptions);
+            if(items.length === 0) return alert("Select a product first!");
+
+            let sum = 0;
+            items.forEach(i => sum += parseInt(i.value));
+            
+            const tax = Math.round(sum * 0.18);
+            const total = sum + tax + 150;
+
+            document.getElementById('count').innerText = items.length;
+            document.getElementById('subtotal').innerText = "₹" + sum.toLocaleString();
+            document.getElementById('tax').innerText = "₹" + tax.toLocaleString();
+            document.getElementById('totalINR').innerText = "₹" + total.toLocaleString();
+            document.getElementById('totalETH').innerText = (total/ETH_RATE).toFixed(5) + " ETH";
+
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }
+
+        function goToStep3() {
+            console.log("Connecting to SMOP Contract: " + CONTRACT_ADDRESS);
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
