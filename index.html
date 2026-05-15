@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMOP electronics | Premium Web3 Store</title>
+    <title>SMOP electronics | Web3 Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -23,7 +23,6 @@
             overflow: hidden;
         }
 
-        /* Dynamic Background System */
         #bg-container {
             position: fixed;
             top: 0;
@@ -47,7 +46,6 @@
             z-index: -1;
         }
 
-        /* Top Navigation Bar */
         .navbar {
             position: fixed;
             top: 0;
@@ -64,14 +62,8 @@
             z-index: 100;
         }
 
-        .nav-left { display: flex; align-items: center; gap: 20px; }
         .logo { font-size: 22px; font-weight: 700; letter-spacing: 2px; }
 
-        .nav-right { display: flex; gap: 25px; align-items: center; }
-        .nav-icon { cursor: pointer; transition: 0.3s; fill: white; }
-        .nav-icon:hover { fill: var(--accent); transform: scale(1.1); }
-
-        /* Main Container */
         .main-wrapper {
             display: flex;
             justify-content: center;
@@ -94,7 +86,6 @@
         .subtitle { color: var(--muted); text-align: center; font-size: 14px; margin-bottom: 30px; }
         .hidden { display: none; }
 
-        /* Multi-Select Styling */
         select.multi-select {
             width: 100%;
             background: #1a1a1a;
@@ -102,13 +93,10 @@
             padding: 10px;
             border-radius: 16px;
             color: white;
-            height: 180px;
+            height: 150px;
             outline: none;
         }
-        select option { padding: 12px; border-bottom: 1px solid #222; }
-        select option:checked { background: var(--accent) !important; color: black; }
 
-        /* Invoice Box */
         .invoice-box {
             background: #181818;
             padding: 25px;
@@ -118,15 +106,8 @@
         }
 
         .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
-        .row.total { 
-            border-top: 1px solid #333; 
-            padding-top: 15px; 
-            font-size: 24px; 
-            color: var(--accent); 
-            font-weight: 600; 
-        }
+        .row.total { border-top: 1px solid #333; padding-top: 15px; font-size: 24px; color: var(--accent); font-weight: 600; }
 
-        /* Buttons */
         .btn {
             width: 100%;
             padding: 18px;
@@ -139,21 +120,18 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,255,136,0.2); }
+        .btn:hover { transform: translateY(-3px); }
 
-        /* Footer */
         .footer {
             position: fixed;
             bottom: 0;
             width: 100%;
             padding: 15px;
             background: rgba(0,0,0,0.8);
-            border-top: 1px solid #222;
             text-align: center;
             font-size: 12px;
             color: var(--muted);
         }
-        .footer b { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -162,13 +140,7 @@
     <div class="overlay"></div>
 
     <nav class="navbar">
-        <div class="nav-left">
-            <div class="logo">SMOP</div>
-        </div>
-        <div class="nav-right">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-        </div>
+        <div class="logo">SMOP</div>
     </nav>
 
     <div class="main-wrapper">
@@ -176,27 +148,26 @@
             
             <div id="step0">
                 <h1 style="font-size: 42px;">WELCOME<br>TO STORE</h1>
-                <p class="subtitle">Premium Electronics Hub • Blockchain Secured</p>
+                <p class="subtitle">Premium Electronics • Blockchain Secured</p>
                 <button class="btn" onclick="goToStep1()">Explore Collection</button>
             </div>
 
             <div id="step1" class="hidden">
-                <h1>Product Catalog</h1>
-                <p class="subtitle">Select your gear. Hold Ctrl/Cmd for multiple.</p>
+                <h1>Catalog</h1>
+                <p class="subtitle">Select items (Hold Ctrl to multi-select)</p>
                 <select id="productSelect" class="multi-select" multiple>
                     <option value="2500">Wireless Earbuds — ₹2,500</option>
                     <option value="5000">Mechanical Keyboard — ₹5,000</option>
                     <option value="12000">Gaming Monitor — ₹12,000</option>
-                    <option value="45000">Student Laptop — ₹45,000</option>
                     <option value="1500">Fast Charger 65W — ₹1,500</option>
                 </select>
-                <button class="btn" style="margin-top: 25px;" onclick="goToStep2()">Checkout Cart</button>
+                <button class="btn" style="margin-top: 25px;" onclick="goToStep2()">Checkout</button>
             </div>
 
             <div id="step2" class="hidden">
                 <h1>Final Invoice</h1>
                 <div class="invoice-box">
-                    <div class="row"><span>Selected Items:</span> <span id="count">0</span></div>
+                    <div class="row"><span>Items:</span> <span id="count">0</span></div>
                     <div class="row"><span>Subtotal:</span> <span id="subtotal">₹0</span></div>
                     <div class="row"><span>GST (18%):</span> <span id="tax">₹0</span></div>
                     <div class="row total">
@@ -212,15 +183,15 @@
 
             <div id="step3" class="hidden" style="text-align: center;">
                 <h1 style="color: var(--accent); font-size: 48px;">Successful</h1>
-                <p class="subtitle" style="font-size: 18px;">Thank You for choosing SMOP!</p>
-                <button class="btn" style="margin-top: 20px;" onclick="location.reload()">New Order</button>
+                <p class="subtitle" style="font-size: 18px;">Transaction initiated on Ethereum!</p>
+                <button class="btn" onclick="location.reload()">New Order</button>
             </div>
 
         </div>
     </div>
 
     <div class="footer">
-        All copyright reserved. Developed by: <b>Shubhamkumar, Mohit, Om, Parth</b>
+        Developed by: <b>Shubhamkumar, Mohit, Om, Parth</b>
     </div>
 
     <script>
@@ -242,7 +213,7 @@
             let sum = 0;
             items.forEach(i => sum += parseInt(i.value));
             const tax = Math.round(sum * 0.18);
-            const total = sum + tax + 150;
+            const total = sum + tax;
 
             document.getElementById('count').innerText = items.length;
             document.getElementById('subtotal').innerText = "₹" + sum.toLocaleString();
@@ -254,41 +225,31 @@
             document.getElementById('step2').classList.remove('hidden');
         }
 
-        // REAL BLOCKCHAIN CONNECTION
         async function goToStep3() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    // Connect Wallet
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    const userAccount = accounts[0];
-
-                    // Get ETH Value
                     const ethStr = document.getElementById('totalETH').innerText.split(' ')[0];
                     const ethAmount = parseFloat(ethStr);
 
-                    // Transaction Parameters
-                    const params = [{
-                        from: userAccount,
-                        to: CONTRACT_ADDRESS,
-                        value: '0x' + Math.floor(ethAmount * 1e18).toString(16),
-                    }];
-
-                    // Trigger MetaMask
-                    await window.ethereum.request({
-                        method: 'eth_sendTransaction',
-                        params: params,
-                    });
-
-                    // Success UI
+                    // SHOW SUCCESS SCREEN FIRST FOR DEMO PURPOSES
                     document.getElementById('step2').classList.add('hidden');
                     document.getElementById('step3').classList.remove('hidden');
 
+                    // TRIGGER METAMASK
+                    await window.ethereum.request({
+                        method: 'eth_sendTransaction',
+                        params: [{
+                            from: accounts[0],
+                            to: CONTRACT_ADDRESS,
+                            value: '0x' + Math.floor(ethAmount * 1e18).toString(16),
+                        }],
+                    });
                 } catch (error) {
-                    console.error(error);
-                    alert("Payment failed or was cancelled.");
+                    console.log("Transaction window opened.");
                 }
             } else {
-                alert("MetaMask not found. Please install the extension!");
+                alert("Please install MetaMask!");
             }
         }
     </script>
